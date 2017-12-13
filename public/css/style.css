@@ -1,0 +1,28 @@
+.background-home{
+    background-image: url('../images/background-home.png');
+    min-height:600px;
+    background-repeat: no-repeat;
+
+}
+.login-form{
+    min-height: 300px;
+    background-color: #ffffff;
+    border-radius: 5px;
+    border:1px #cccccc;
+    margin-top:80px;
+    text-align: center;
+}
+.login-header{
+    border-bottom: 1px #cccccc;
+    padding:20px;
+}
+
+
+/*
+Admin
+*/
+.admin-header{
+    width:100%;
+    background-color: black;
+    min-height:30px;
+}
