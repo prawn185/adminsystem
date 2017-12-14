@@ -1,9 +1,22 @@
-<meta charset="utf-8">
-<meta name="description" content="">
-<meta name="author" content="Scotch">
+<!DOCTYPE html>
+<html lang="{{ app()->getLocale() }}">
+<head>
 
-<title>Admin System</title>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
 
-<!-- load bootstrap from a cdn -->
-<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-<link rel="stylesheet" href="css/style.css">
+    <!-- CSRF Token -->
+    <meta name="csrf-token" content="{{ csrf_token() }}">
+
+    <title>{{ config('app.name', 'Admin System') }}</title>
+
+
+    <link rel="stylesheet" href="css/style.css">
+    <script src="https://use.fontawesome.com/ac33838d19.js"></script>
+
+
+    <title>Admin System</title>
+
+
+</head>

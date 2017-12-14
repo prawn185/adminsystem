@@ -12,17 +12,24 @@
 */
 Route::get('/', function()
 {
-    return View::make('auth.login');
+    if (Auth::check()) {
+        return View::make('pages.admin');
+    }else{
+        return View::make('auth.login');
+    }
 });
+Route::group(['middleware' => ['auth']], function() {
 
-//
-//Route::get('/admin', function()
-//{
-//    return View::make('pages.home');
-//});
+//    Dashboards
+
+    Route::get('tasks', 'TaskController@viewTasks');
+//    Tasks
 
 
+});
+Route::get('logout', 'LoginController@logout');
 
 Auth::routes();
 
 Route::get('pages.admin', 'LoginController@index')->name('home');
+

@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class Users extends Migration
+class AddDescTimeTaskTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,14 +13,12 @@ class Users extends Migration
      */
     public function up()
     {
-       Schema::create('users', function (Blueprint $table) {
-        $table->increments('id');
-        $table->string('name');
-        $table->string('email')->unique();
-        $table->string('password');
-        $table->rememberToken();
-        $table->timestamps();
-    });
+        Schema::table('task', function (Blueprint $table) {
+            $table->date('time');
+            $table->longText('description');
+
+
+        });
     }
 
     /**
