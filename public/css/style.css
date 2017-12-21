@@ -59,12 +59,16 @@ h1 {
   padding-top: 1.5rem;
   padding-bottom: 1.5rem; }
 
+.view-task .task-details {
+  border-top: 1px #cccccc solid; }
+
 .task-list {
   width: 100%; }
 
 .task {
   border: 1px #cccccc solid;
   border-radius: 5px;
+  box-shadow: 3px 3px 12px rgba(0, 0, 0, 0.5);
   margin-top: 10px;
   margin-bottom: 10px; }
   .task .title {
@@ -73,8 +77,7 @@ h1 {
       padding: 10px;
       border-bottom: 1px #cccccc solid; }
     .task .title .task-buttons {
-      padding-left: 10px;
-      padding-top: 10px; }
+      padding: 10px; }
   .task .description {
     height: 100%;
     padding: 10px 20px;

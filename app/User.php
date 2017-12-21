@@ -2,6 +2,7 @@
 
 namespace App;
 
+use App\Models\Task\Task;
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 
@@ -14,8 +15,11 @@ class User extends Authenticatable
      *
      * @var array
      */
-    protected $fillable = [
-        'name', 'email', 'password',
+    protected $guarded = [
+
+        'created_at',
+        'updated_at',
+        'password',
     ];
 
     /**
@@ -24,6 +28,13 @@ class User extends Authenticatable
      * @var array
      */
     protected $hidden = [
-        'password', 'remember_token',
+        'password',
+        'remember_token',
     ];
+
+
+    public function tasks(){
+        return $this->hasMany(Task::class);
+    }
+
 }

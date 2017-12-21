@@ -15,6 +15,9 @@
                     <a class="nav-link" href="{{ url('tasks') }}">Tasks</a>
                 </li>
                 <li class="nav-item">
+                    <a class="nav-link" href="{{ url('tasks/completed') }}">Completed Tasks</a>
+                </li>
+                <li class="nav-item">
                     <a class="nav-link" href="#">Invoices</a>
                 </li>
                 <li class="nav-item">
