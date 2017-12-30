@@ -14,15 +14,20 @@ class taskSeeder extends Seeder
 
         $faker = Faker\Factory::create();
 
+
+
         for ($i = 0; $i < 10; $i++) {
             DB::table('task')->insert([
 
                 'title'       => $faker->title,
-                'priority'    => 1,
+                'priority'    => "Normal",
                 'assignedTo'  => 1,
-                'status'      => "open",
-                'time_left'   => 1,
+                'status'      => "Open",
+                'total_time'   => 60,
+                'time_used'   => 27,
                 'description' => $faker->text,
+                'created_by'     => 1,
+                'updated_by'     => 1,
                 'user_id'     => $i,
 
             ]);

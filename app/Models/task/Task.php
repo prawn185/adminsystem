@@ -5,6 +5,8 @@ namespace App\Models\Task;
 use App\User;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
+use Illuminate\Database\Eloquent\Relations\HasMany;
+use Illuminate\Database\Eloquent\Relations\HasOne;
 
 class Task extends Model
 {
@@ -32,13 +34,22 @@ class Task extends Model
         return $this->belongsTo(User::class);
 
     }
-
+    /**
+     * @return HasOne
+     */
     public function priority(){
 
         return $this->hasOne(Priority::class);
 
     }
+    /**
+     * @return HasMany
+     */
+    public function notes(){
 
+        return $this->hasMany(Notes::class);
+
+    }
 
 
 //Get all tasks assigned to one user

@@ -10,50 +10,32 @@ use Illuminate\Support\Facades\Auth;
 class TaskController extends Controller
 {
 
-//    Create Read Update Delete
-
-//    public function get($id = false)
-//    {
-//        if($id){
-//            $data = Task\Task::find($id)->with('priority')->first();
-//            return view('tasks.view')->with('task', $data);
-//        }
-//        else{
-//            $data = Task\Task::all();
-//            return view('tasks.tasklist')->with('tasks', $data);
-//        }
-//    }
-
-
     function viewTaskList()
     {
-//    Get all tasks where user ID = current user ID
-        $data = Task\Task::where('assignedTo', Auth::id())->where('status','!=','Completed')->with('priority')->get();
-        foreach($data as $task){
+        $data = Task\Task::where('assignedTo', Auth::id())->where('status', '!=', 'Completed')->with('notes')->get();
 
-            //$priority = Task\Priority::find($task->priority)->first();
-        }
-        $priority = "Null";
-
-
-        return view('tasks.tasklist')->with('tasks', $data)->with('priority', $priority);
+        return view('tasks.tasklist')->with('tasks', $data);
     }
 
     function createTaskView()
     {
 
-        $users = User::pluck('name','id');
+        $users = User::pluck('name', 'id');
 
-        return view('tasks.create')->with('users',$users);
+        return view('tasks.create')->with('users', $users);
 
     }
+
     function createTaskPost(Request $request)
     {
 
         $task = new Task\Task();
         $task->status = "Open";
-        $task->time_left = 1;
         $task->user_id = Auth::id();
+        $task->total_time = $request->input()['total_time'];
+        $task->time_used = 0;
+        $task->created_by = Auth::id();
+        $task->updated_by = Auth::id();
         $task->fill($request->input());
         $task->save();
         return redirect('tasks');
@@ -81,8 +63,17 @@ class TaskController extends Controller
     {
 
         $task = Task\Task::find($request->id);
+        $task->priority = $request->priority;
+        $task->updated_by = Auth::id();
+        $task->updated_at = now();
+        $task->total_time = $request->input()['total_time'];
+
         $task->fill($request->input());
+
         $task->save();
+
+
+
 
         return redirect('tasks');
     }
@@ -97,10 +88,37 @@ class TaskController extends Controller
         return redirect('tasks');
     }
 
-    function viewCompletedTasks(){
-        $data = Task\Task::where('assignedTo', Auth::id())->where('status','=','Completed')->with('priority')->get();
+    function viewCompletedTasks()
+    {
+        $data = Task\Task::where('assignedTo', Auth::id())->where('status', '=', 'Completed')->with('priority')->get();
 
         return view('tasks.completed')->with('tasks', $data);
     }
+
+    function addNote(Request $request, $task_id){
+
+        $note = new Task\Notes();
+
+        $note->task_id = $task_id;
+        $note->description = $request->note_desc;
+        $note->time = $request->addtime;
+        $note->user_id = Auth::id();
+        $note->created_at = now();
+
+        $note->save();
+
+        $task = Task\Task::find($task_id);
+
+
+
+        $task->time_used = $task->time_used + $request->addtime;
+        $task->updated_at = now();
+        $task->save();
+
+        app('App\Http\Controllers\UserController')->removeTime($request->addtime);
+
+        return redirect('tasks');
+    }
+
 
 }

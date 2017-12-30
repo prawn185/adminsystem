@@ -16,26 +16,23 @@
                 <div class="row">
                     <div class="col-lg-6">
                         {{ Form::label('priority', 'Priority') }}
-                        {{Form::select('priority', $priorities, $task->priority ,['class' => 'form-control'])
+                        {{Form::select('priority', ['Critical' => 'Critical','High' => 'High','Normal'=>'Normal','Low'=>'Low','None'=>'None'],$task->priority ,['class' => 'form-control'])
                         }}
                     </div>
                     <div class="col-lg-6">
-                        {{Form::label('assignedTo', 'AssignedTo') }}
-                        {{Form::select('assignedTo')}}
+                        {{Form::label('assignedTo', 'Assigned To') }}
+                        {{Form::select('assignedTo', \App\User::all()->pluck('name','id') ,$task->priority ,['class' => 'form-control'])}}
 
-                </div>
+                    </div>
                 </div>
             </div>
             <div class="form-group">
                 <div class="row">
                     <div class="col-lg-3">
-                        {{Form::label('time ', 'Time') }}
-                        {{Form::number('time', $task->time, ['class' => 'form-control']) }}
+                        {{Form::label('total_time ', 'Time Allocated') }}
+                        {{Form::number('total_time', $task->total_time, ['class' => 'form-control']) }}
                     </div>
-                    <div class="col-lg-9">
-                        {{--{{Form::label('priority ', 'Priority') }}--}}
-                        {{--{{Form::number('priority', '', ['class' => 'form-control']) }}--}}
-                    </div>
+
                 </div>
             </div>
 

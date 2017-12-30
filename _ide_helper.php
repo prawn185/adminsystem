@@ -1434,7 +1434,7 @@ namespace Illuminate\Support\Facades {
         }
         
         /**
-         * Get all of the commands registered with the console.
+         * Get all of the Commands registered with the console.
          *
          * @return array 
          * @static 
@@ -1458,7 +1458,7 @@ namespace Illuminate\Support\Facades {
         }
         
         /**
-         * Bootstrap the application for artisan commands.
+         * Bootstrap the application for artisan Commands.
          *
          * @return void 
          * @static 
@@ -2398,7 +2398,7 @@ namespace Illuminate\Support\Facades {
         }
         
         /**
-         * Set the pipes through which commands should be piped before dispatching.
+         * Set the pipes through which Commands should be piped before dispatching.
          *
          * @param array $pipes
          * @return $this 

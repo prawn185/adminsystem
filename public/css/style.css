@@ -1,6 +1,9 @@
 .btn {
   cursor: pointer; }
 
+.hide {
+  display: none; }
+
 .header-time {
   color: #ffffff; }
 
@@ -10,6 +13,13 @@
 
 header {
   margin-bottom: 20px; }
+
+.user-time {
+  margin-right: 40px;
+  color: white;
+  border: 1px solid white;
+  padding: 3px;
+  border-radius: 5px; }
 
 /* Base structure
  */
@@ -85,11 +95,31 @@ h1 {
     border-left: 1px #cccccc solid;
     word-wrap: break-word; }
   .task .task-details h6 {
+    border-radius: 0 0 0 5px;
     margin: 0;
     padding: 5px 10px;
     border-bottom: 1px #cccccc solid; }
     .task .task-details h6:last-of-type {
       border: none; }
+  .task .notes {
+    padding: 10px;
+    border-top: 1px #cccccc solid; }
+
+.achievements {
+  padding: 10px;
+  border-radius: 5px;
+  border: solid 1px #cccccc; }
+  .achievements img {
+    max-height: 100px;
+    max-width: 100px;
+    margin: 0 auto;
+    text-align: center;
+    display: block; }
+  .achievements p {
+    text-align: center; }
+
+.details {
+  margin-top: 10px; }
 
 /*!
  * Bootstrap v4.0.0-beta.2 (https://getbootstrap.com)

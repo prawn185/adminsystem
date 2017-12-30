@@ -11,19 +11,25 @@
                 <li class="nav-item active">
                     <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
                 </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="{{ url('tasks') }}">Tasks</a>
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">Tasks</a>
+                    <div class="dropdown-menu">
+                        <a class="dropdown-item" href="{{ url('tasks') }}">My Tasks</a>
+                        <a class="dropdown-item" href="{{ url('tasks/completed') }}">Completed Tasks</a>
+                    </div>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="{{ url('tasks/completed') }}">Completed Tasks</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="#">Invoices</a>
+                    <a class="nav-link" href="{{ url('myprofile') }}">My Profile</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="#">Other Stuff</a>
                 </li>
             </ul>
+
+                <div class="user-time">
+                 {{ Auth::user()->time_left }}
+                </div>
+
             <div class="col-hidden-sm-down">
                 <div class="header-time">
                     <div id="timediv"></div>

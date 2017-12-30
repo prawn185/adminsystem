@@ -16,6 +16,10 @@ class userSeeder extends Seeder
             'name'       => "admin@admin.com",
             'email'    => "admin@admin.com",
             'password'  => bcrypt('admin123'),
+            'working_hours'  => 480,
+            'time_left'  => 360,
+            'date_of_birth'  => now(),
+            'team'  => "Web",
 
         ]);
     }

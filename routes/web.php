@@ -17,6 +17,16 @@ Route::get('/', function () {
         return View::make('auth.login');
     }
 });
+
+Route::get('logout', 'LoginController@logout');
+
+Auth::routes();
+
+Route::get('pages.admin', 'LoginController@index')->name('home');
+
+
+
+
 Route::group(['middleware' => ['auth']], function () {
 
 //    Dashboards
@@ -26,7 +36,7 @@ Route::group(['middleware' => ['auth']], function () {
     Route::get('tasks', 'TaskController@viewTaskList');
     Route::get('tasks/view/{id}', 'TaskController@viewSingleTask');
 
-    //    Edit Task
+//    Create Task
     Route::get('tasks/create', 'TaskController@createTaskView');
     Route::post('tasks/create', 'TaskController@createTaskPost');
 
@@ -38,8 +48,24 @@ Route::group(['middleware' => ['auth']], function () {
     Route::get('tasks/complete/{id}', 'TaskController@completeTask');
     Route::get('tasks/completed', 'TaskController@viewCompletedTasks');
 
+//    Add Note
+    Route::post('tasks/addnote/{id}', 'TaskController@addNote');
+
+//    Profile
+
+//    My Profle
+    Route::get('myprofile', 'ProfileController@viewMyProfile');
+//    Any Profile
+
+
+
 
 });
+
+
+
+
+
 Route::get('logout', 'LoginController@logout');
 
 Auth::routes();

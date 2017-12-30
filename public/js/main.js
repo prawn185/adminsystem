@@ -13,4 +13,8 @@ function timestamphome(){
 
 
 }
- 
+
+$(".notes-area").hide();
+function showNotes($i) {
+     $("#task-id-" + $i).toggle();
+}

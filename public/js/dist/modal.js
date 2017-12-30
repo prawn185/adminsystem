@@ -423,7 +423,7 @@ var Modal = function () {
       var _this9 = this;
 
       if (this._isBodyOverflowing) {
-        // Note: DOMNode.style.paddingRight returns the actual value or '' if not set
+        // Notes: DOMNode.style.paddingRight returns the actual value or '' if not set
         //   while $(DOMNode).css('padding-right') returns the calculated value or 0 if not set
         // Adjust fixed content padding
         $(Selector.FIXED_CONTENT).each(function (index, element) {

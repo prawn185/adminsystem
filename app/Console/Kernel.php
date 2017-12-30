@@ -2,18 +2,19 @@
 
 namespace App\Console;
 
+use App\User;
 use Illuminate\Console\Scheduling\Schedule;
 use Illuminate\Foundation\Console\Kernel as ConsoleKernel;
 
 class Kernel extends ConsoleKernel
 {
     /**
-     * The Artisan commands provided by your application.
+     * The Artisan Commands provided by your application.
      *
      * @var array
      */
     protected $commands = [
-        //
+
     ];
 
     /**
@@ -24,18 +25,22 @@ class Kernel extends ConsoleKernel
      */
     protected function schedule(Schedule $schedule)
     {
-        // $schedule->command('inspire')
-        //          ->hourly();
+        $schedule->call(function(){
+            $user = User::all();
+            $user->time_left = $user->working_hours;
+            $user->save();
+//        })->daily();
+        })->everyMinute();
     }
 
     /**
-     * Register the commands for the application.
+     * Register the Commands for the application.
      *
      * @return void
      */
     protected function commands()
     {
-        $this->load(__DIR__.'/Commands');
+        $this->load(__DIR__ . '/Commands');
 
         require base_path('routes/console.php');
     }
