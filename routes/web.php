@@ -55,9 +55,22 @@ Route::group(['middleware' => ['auth']], function () {
 
 //    My Profle
     Route::get('myprofile', 'ProfileController@viewMyProfile');
+
+//    Get all profiles
+    Route::get('profiles', 'ProfileController@viewAllProfiles');
+
+
 //    Any Profile
+    Route::get('profile/create', 'ProfileController@createProfile')->name('createProfile');
+    Route::get('profile/{id}', 'ProfileController@viewProfile');
+
+    Route::get('profile/edit/{id}', 'ProfileController@viewEditProfile');
 
 
+
+    Route::post('profile/edit/{id?}', 'ProfileController@editProfile');
+
+    Route::post('profile/create', 'ProfileController@editProfile');
 
 
 });

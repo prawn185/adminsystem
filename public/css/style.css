@@ -105,20 +105,27 @@ h1 {
     padding: 10px;
     border-top: 1px #cccccc solid; }
 
-.achievements {
+.all-profiles .user {
+  padding: 10px;
+  border-radius: 5px;
+  border: solid 1px #cccccc;
+  margin: 10px 0; }
+  .all-profiles .user .title a:nth-child(2) {
+    float: right; }
+
+.user-profile .achievements {
   padding: 10px;
   border-radius: 5px;
   border: solid 1px #cccccc; }
-  .achievements img {
+  .user-profile .achievements img {
     max-height: 100px;
     max-width: 100px;
     margin: 0 auto;
     text-align: center;
     display: block; }
-  .achievements p {
+  .user-profile .achievements p {
     text-align: center; }
-
-.details {
+.user-profile .details {
   margin-top: 10px; }
 
 /*!

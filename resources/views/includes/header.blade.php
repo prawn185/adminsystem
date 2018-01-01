@@ -18,8 +18,13 @@
                         <a class="dropdown-item" href="{{ url('tasks/completed') }}">Completed Tasks</a>
                     </div>
                 </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="{{ url('myprofile') }}">My Profile</a>
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">Profiles</a>
+                    <div class="dropdown-menu">
+                        <a class="dropdown-item" href="{{ url('myprofile') }}">My Profile</a>
+                        <a class="dropdown-item" href="{{ url('profiles') }}">All profiles</a>
+                        <a class="dropdown-item" href="{{ route('createProfile') }}">Create New Profile</a>
+                    </div>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="#">Other Stuff</a>

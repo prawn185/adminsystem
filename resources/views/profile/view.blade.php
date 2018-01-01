@@ -17,22 +17,31 @@
                         <h3>Achievements</h3>
                         <div class="achievements">
                             <div class="row">
-                                <div class="col-lg-3">
-                                    <img src="https://www.badgeup.io/assets/img/achievements-and-goals.svg" alt="">
-                                    <p>You've created {{$created}} tasks!</p>
-                                </div>
-                                <div class="col-lg-3">
-                                    <img src="https://www.badgeup.io/assets/img/achievements-and-goals.svg" alt="">
-                                    <p>You've completed {{$completed}} tasks!</p>
-                                </div>
-                                <div class="col-lg-3">
-                                    <img src="https://www.badgeup.io/assets/img/achievements-and-goals.svg" alt="">
-                                    <p>You've created 100 tasks!</p>
-                                </div>
-                                <div class="col-lg-3">
-                                    <img src="https://www.badgeup.io/assets/img/achievements-and-goals.svg" alt="">
-                                    <p>You've created 100 tasks!</p>
-                                </div>
+
+                                @if($created > 0)
+                                    <div class="col-lg-3">
+                                        <img src="https://www.badgeup.io/assets/img/achievements-and-goals.svg" alt="">
+                                        <p>You've created {{$created}} tasks!</p>
+                                    </div>
+                                @endif
+                                @if($completed > 0)
+                                    <div class="col-lg-3">
+                                        <img src="https://www.badgeup.io/assets/img/achievements-and-goals.svg" alt="">
+                                        <p>You've completed {{$completed}} tasks!</p>
+                                    </div>
+                                @endif
+                                @if($created > 0)
+                                    <div class="col-lg-3">
+                                        <img src="https://www.badgeup.io/assets/img/achievements-and-goals.svg" alt="">
+                                        <p>You've created {{$created}} tasks!</p>
+                                    </div>
+                                @endif
+                                @if($completed > 0)
+                                    <div class="col-lg-3">
+                                        <img src="https://www.badgeup.io/assets/img/achievements-and-goals.svg" alt="">
+                                        <p>You've completed {{$completed}} tasks!</p>
+                                    </div>
+                                @endif
 
 
                             </div>
