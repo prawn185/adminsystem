@@ -16,5 +16,13 @@ function timestamphome(){
 
 $(".notes-area").hide();
 function showNotes($i) {
-     $("#task-id-" + $i).toggle();
+    $("#task-id-" + $i).toggle();
 }
+
+
+$('#changeTaskList').on('change', function(){
+
+    window.location = ("/adminsystem/public/tasks/"+$(this).val());
+});
+
+

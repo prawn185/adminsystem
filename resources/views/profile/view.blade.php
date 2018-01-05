@@ -55,19 +55,16 @@
                             <div class="row">
                                 <div class="col-lg-6">
                                     <h6>Email: {{$user->email}}</h6>
-                                    <h6>Date of Birth</h6>
-                                    <h6>Date Joined {{$user->created}}</h6>
-                                    <h6>Team</h6>
-                                    <h6>How many tasks</h6>
-
-
+                                    <h6>Date of Birth: {{$user->date_of_birth}}</h6>
+                                    <h6>Date Joined: {{$user->created_at}}</h6>
+                                    <h6>Team: {{$user->team}}</h6>
+                                    <h6>How many tasks: {{$assigned_to}}</h6>
                                 </div>
                                 <div class="col-lg-6">
                                     <h6>Working Hours: {{$user->working_hours}}</h6>
                                     <h6>Time Left: {{$user->time_left}}</h6>
                                     <h6>Tasks Completed: {{$completed}}</h6>
                                     <h6>Tasks Created: {{$created}}</h6>
-                                    <h6>{{$user->name}}</h6>
                                 </div>
                             </div>
                         </div>

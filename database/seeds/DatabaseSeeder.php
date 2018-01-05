@@ -14,7 +14,7 @@ class DatabaseSeeder extends Seeder
     {
         $this->call([
             prioritySeeder::class,
-//            projectSeeder::class,
+            CustomerTableSeeder::class,
             taskSeeder::class,
             userSeeder::class,
             notesSeeder::class

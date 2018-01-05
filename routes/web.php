@@ -34,11 +34,16 @@ Route::group(['middleware' => ['auth']], function () {
 
 //    Tasks
     Route::get('tasks', 'TaskController@viewTaskList');
+    Route::get('tasks/create', 'TaskController@createTaskView');
+    Route::post('tasks/create', 'TaskController@createTaskPost');
+    Route::get('tasks/completed', 'TaskController@viewCompletedTasks');
+    Route::get('tasks/completed', 'TaskController@viewCompletedTasks');
+    Route::get('tasks/{id}', 'TaskController@viewAnotherTaskList');
     Route::get('tasks/view/{id}', 'TaskController@viewSingleTask');
 
 //    Create Task
-    Route::get('tasks/create', 'TaskController@createTaskView');
-    Route::post('tasks/create', 'TaskController@createTaskPost');
+
+
 
 //    Edit Task
     Route::get('tasks/edit/{id}', 'TaskController@editSingleTask');
@@ -46,7 +51,7 @@ Route::group(['middleware' => ['auth']], function () {
 
 //    Complete Task
     Route::get('tasks/complete/{id}', 'TaskController@completeTask');
-    Route::get('tasks/completed', 'TaskController@viewCompletedTasks');
+
 
 //    Add Note
     Route::post('tasks/addnote/{id}', 'TaskController@addNote');
@@ -61,8 +66,10 @@ Route::group(['middleware' => ['auth']], function () {
 
 
 //    Any Profile
-    Route::get('profile/create', 'ProfileController@createProfile')->name('createProfile');
+    Route::get('profile/create', 'ProfileController@viewCreateProfile')->name('viewCreateProfile');
     Route::get('profile/{id}', 'ProfileController@viewProfile');
+
+
 
     Route::get('profile/edit/{id}', 'ProfileController@viewEditProfile');
 
@@ -70,9 +77,25 @@ Route::group(['middleware' => ['auth']], function () {
 
     Route::post('profile/edit/{id?}', 'ProfileController@editProfile');
 
-    Route::post('profile/create', 'ProfileController@editProfile');
+    Route::post('profile/create', 'ProfileController@createProfile');
+
+    Route::get('customers', 'CustomerController@allCustomers');
+    Route::get('customer/{id}', 'CustomerController@viewCustomer');
+
+    Route::get('customer/edit/{id}', 'CustomerController@editCustomer');
+    Route::post('customer/edit/{id}', 'CustomerController@createEditCustomer');
+
+    Route::get('customers/create', 'CustomerController@editCustomer');
+    Route::post('customers/create', 'CustomerController@createEditCustomer');
 
 
+
+
+
+    Route::get('reports',function (){
+        return view('reports.search');
+    });
+    Route::post('reports', 'ReportController@search');
 });
 
 

@@ -35,6 +35,14 @@ class Task extends Model
 
     }
     /**
+     * @return BelongsTo
+     */
+    public function customer()
+    {
+        return $this->belongsTo(Customer::class);
+
+    }
+    /**
      * @return HasOne
      */
     public function priority(){

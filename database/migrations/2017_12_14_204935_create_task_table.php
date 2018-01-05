@@ -22,9 +22,10 @@ class CreateTaskTable extends Migration
             $table->integer('total_time');
             $table->integer('time_used');
             $table->longText('description');
+            $table->integer('customer_id');
             $table->integer('created_by');
             $table->integer('updated_by');
-            $table->integer('user_id')->unsigned();
+//            $table->integer('user_id')->unsigned();
             $table->timestamps();
         });
     }

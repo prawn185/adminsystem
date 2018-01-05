@@ -14,29 +14,40 @@ class TaskController extends Controller
     {
         $data = Task\Task::where('assignedTo', Auth::id())->where('status', '!=', 'Completed')->with('notes')->get();
 
-        return view('tasks.tasklist')->with('tasks', $data);
+        $users = User::pluck('name','id');
+
+        return view('tasks.tasklist')->with('tasks', $data)->with('users', $users);
     }
 
     function createTaskView()
     {
-
         $users = User::pluck('name', 'id');
 
         return view('tasks.create')->with('users', $users);
 
     }
 
+    function viewAnotherTaskList($id)
+    {
+        $data = Task\Task::where('assignedTo', $id)->where('status', '!=', 'Completed')->with('notes')->get();
+        $users = User::pluck('name','id');
+        return view('tasks.tasklist')->with('tasks', $data)->with('users', $users);
+    }
+
     function createTaskPost(Request $request)
     {
 
         $task = new Task\Task();
+        $task->fill($request->input());
         $task->status = "Open";
-        $task->user_id = Auth::id();
+        $task->assignedTo = $request->assignedTo;
+        $task->customer_id = $request->customer_id;
         $task->total_time = $request->input()['total_time'];
         $task->time_used = 0;
+
         $task->created_by = Auth::id();
         $task->updated_by = Auth::id();
-        $task->fill($request->input());
+
         $task->save();
         return redirect('tasks');
     }
@@ -83,6 +94,8 @@ class TaskController extends Controller
 
         $task = Task\Task::find($request->id);
         $task->status = "Completed";
+        $task->updated_by = Auth::id();
+        $task->updated_at = now();
         $task->save();
 
         return redirect('tasks');
@@ -112,6 +125,7 @@ class TaskController extends Controller
 
 
         $task->time_used = $task->time_used + $request->addtime;
+        $task->updated_by = Auth::id();
         $task->updated_at = now();
         $task->save();
 

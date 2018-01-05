@@ -21,7 +21,7 @@
                     </div>
                     <div class="col-lg-6">
                         {{Form::label('assignedTo', 'Assigned To') }}
-                        {{Form::select('assignedTo', \App\User::all()->pluck('name','id') ,$task->priority ,['class' => 'form-control'])}}
+                        {{Form::select('assignedTo', \App\User::all()->pluck('name','id') ,$task->assignedTo ,['class' => 'form-control'])}}
 
                     </div>
                 </div>

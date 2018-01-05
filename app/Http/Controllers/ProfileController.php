@@ -9,7 +9,7 @@ use Illuminate\Support\Facades\Auth;
 
 class ProfileController extends Controller
 {
-    function createProfile(){
+    function viewCreateProfile(){
 
         return view('profile.create');
     }
@@ -21,7 +21,9 @@ class ProfileController extends Controller
 
         $tasks_created = Task\Task::where('created_by', Auth::id())->count();;
 
-        return view('profile.view')->with('user', $data)->with('created', $tasks_created)->with('completed', $tasks_completed);
+        $tasks_assigned_to = Task\Task::where('assignedTo', $data->id)->where('status','Open')->count();
+
+        return view('profile.view')->with('user', $data)->with('created', $tasks_created)->with('completed', $tasks_completed)->with('assigned_to', $tasks_assigned_to);
     }
     function viewAllProfiles(){
 
@@ -29,6 +31,7 @@ class ProfileController extends Controller
 
         return view('profile.all')->with('users', $data);
     }
+
     function viewProfile($id){
         $data =  User::find($id);
 
@@ -36,8 +39,11 @@ class ProfileController extends Controller
 
         $tasks_created = Task\Task::where('created_by', $data->id)->count();
 
-        return view('profile.view')->with('user', $data)->with('created', $tasks_created)->with('completed', $tasks_completed);
+        $tasks_assigned_to = Task\Task::where('assignedTo', $data->id)->where('status','Open')->count();
+
+        return view('profile.view')->with('user', $data)->with('created', $tasks_created)->with('completed', $tasks_completed)->with('assigned_to', $tasks_assigned_to);
     }
+
     function viewEditProfile($id){
 
         $data =  User::find($id);
@@ -63,6 +69,22 @@ class ProfileController extends Controller
         $user->fill($request->input());
 
         $user->save();
+
+        return redirect('profiles');
+
+    }
+
+
+    public function createProfile(Request $request){
+
+        $user = new User();
+
+        $user->password = bcrypt($request->password);
+        $user->time_left = $request->working_hours;
+        $user->fill($request->input());
+
+        $user->save();
+
 
         return redirect('profiles');
 

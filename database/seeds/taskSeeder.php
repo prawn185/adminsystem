@@ -26,9 +26,10 @@ class taskSeeder extends Seeder
                 'total_time'   => 60,
                 'time_used'   => 27,
                 'description' => $faker->text,
+                'customer_id'     => 1,
                 'created_by'     => 1,
                 'updated_by'     => 1,
-                'user_id'     => $i,
+//                'user_id'     => $i,
 
             ]);
         }

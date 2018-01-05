@@ -6,18 +6,23 @@
             <div class="col">
                 <h1>Task List</h1>
                 <a href="{{URL::to('tasks/create')}}"><div class="btn btn-success">Create Task <i class="fa fa-plus" aria-hidden="true"></i></div></a>
+                <div class="col-lg-3 float-right">
+                    {{ Form::select('user', $users, '' , ['class' =>'form-control', 'id'=>'changeTaskList'])}}
+                </div>
             </div>
         </div>
+
         <div class="row">
             <div class="task-list">
                 <div class="col-lg-12">
 
                     @foreach($tasks as $task)
 
-                        <?php
-                        $time_left =  (int)$task->total_time - (int)$task->time_used;
+                        {{--{{var_dump($task)}}--}}
 
-                        ?>
+                        @php
+                            $time_left =  (int)$task->total_time - (int)$task->time_used;
+                        @endphp
                         <div class="task">
                             <div class="row no-gutters">
                                 <div class="col-lg-3">
@@ -40,8 +45,9 @@
                                     <div class="task-details">
                                         <h6 style="background-color:{{priorityColors($task->priority)}} ">Priority: {{$task->priority}}</h6>
                                         <h6>Status: {{$task->status}}</h6>
+                                        <h6>Customer: {{ \App\Models\Customer::find($task->customer_id)['name']}}</h6>
                                         <h6>Assigned To: {{app\User::find($task->assignedTo)['name']}}</h6>
-                                        <h6>Assigned By: {{app\User::find($task->createdBy)['name']}}</h6>
+                                        <h6>Created By: {{app\User::find($task->createdBy)['name']}}</h6>
                                         {{--     <h6>Updated At: {{Carbon\Carbon::createFromTimestamp($task->updated_at)}}</h6>--}}
                                         <h6>Total Time: {{$task->total_time}}</h6>
                                         <h6 @if($time_left < 0 ){{"style=background-color:#d83845"}} @endif >Time Left: {{$time_left}}</h6>
