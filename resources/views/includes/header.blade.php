@@ -8,8 +8,8 @@
 
         <div class="collapse navbar-collapse" id="navbarsExampleDefault">
             <ul class="navbar-nav mr-auto">
-                <li class="nav-item active">
-                    <a class="nav-link" href="/">Home <span class="sr-only">(current)</span></a>
+                <li class="nav-item">
+                    <a class="nav-link" href="/">Home</a>
                 </li>
                 <li class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">Tasks</a>
@@ -38,15 +38,18 @@
                 </li>
             </ul>
 
-                <div class="user-time">
-                 {{ Auth::user()->time_left }}
-                </div>
-
+            <div class="user-time">
+                {{ Auth::user()->time_left }}
+            </div>
+            <div class="report-bug">
+                <a href="mailto:shaun@laratasks.co.uk?Subject=Bug Report">Report Bug</a>
+            </div>
             <div class="col-hidden-sm-down">
                 <div class="header-time">
                     <div id="timediv"></div>
                 </div>
             </div>
+
             <a href="{{route('logout')}}" id="logout">Log Out</a>
         </div>
     </nav>

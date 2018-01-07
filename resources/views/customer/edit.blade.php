@@ -6,21 +6,16 @@
     <section class="user-profile">
         <div class="container">
             <div class="user">
-                <div class="row">
-                    <div class="col-lg-12">
-                        <div class="title">
-                            <h1>{{(isset($customer->id)) ? $customer->id.":".$customer->name : "Create Customer"}}</h1>
-                        </div>
-                    </div>
-                </div>
                 <section class="details">
                     <div class="row">
                         <div class="col-lg-12">
-                            <h3> {{(isset($customer->id)) ? "Edit Details:" : ""}}</h3>
+                            <h3> {{(isset($customer->id)) ? "Edit Details:" : "Create Customer"}}</h3>
                             <div class="row">
                                 <div class="col-lg-6">
                                     <div class="form-group">
-                                        {{Form::open(array('action' => array('CustomerController@editCustomer', $customer->id)))}}
+                                        {{Form::open(array('action' => array('CustomerController@createEditCustomer', $customer->id)))}}
+
+                                        {{Form::hidden('id', $customer->id) }}
 
                                         {{Form::label('name', 'Name') }}
                                         {{Form::text('name', $customer->name, ['class' => 'form-control']) }}

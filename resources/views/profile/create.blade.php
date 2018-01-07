@@ -31,8 +31,8 @@
                                     {{Form::label('email', 'Email') }}
                                     {{Form::email('email', "", ['class' => 'form-control']) }}
 
-                                    {{Form::label('date_of_birth', 'Date of Birth') }}
-                                    {{Form::text('date_of_birth', "", ['class' => 'form-control', "placeholder","dd/mm/yy"]) }}
+                                    {{--{{Form::label('date_of_birth', 'Date of Birth') }}--}}
+                                    {{--{{Form::text('date_of_birth', "", ['class' => 'form-control', "placeholder","dd/mm/yy"]) }}--}}
 
                                     {{Form::label('team', 'Team') }}
                                     {{Form::text('team', "", ['class' => 'form-control']) }}

@@ -1,11 +1,5 @@
-<!DOCTYPE html>
-<html lang="{{ app()->getLocale() }}">
+
 <head>
-
-    <?php
-    $csspath = "adminsystem"
-    ?>
-
 
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -17,7 +11,12 @@
     <title>{{ config('app.name', 'Admin System') }}</title>
 
     <link rel="stylesheet" href=" {{URL::asset('css/style.css')}}">
+
     <script src="https://use.fontawesome.com/ac33838d19.js"></script>
+
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
+
 
 
     <title>Admin System</title>

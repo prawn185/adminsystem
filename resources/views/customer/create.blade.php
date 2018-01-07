@@ -9,7 +9,7 @@
                 <div class="row">
                     <div class="col-lg-12">
                         <div class="title">
-                            <h1>Create New User</h1>
+                            <h1>Create New Customer</h1>
                         </div>
                     </div>
                 </div>
@@ -20,35 +20,36 @@
                             <div class="row">
                                 <div class="col-lg-6">
 
-                                    {{Form::open(array('action' => array('ProfileController@createProfile')))}}
+                                    {{Form::open(array('action' => array('CustomerController@createEditCustomer')))}}
 
                                     {{Form::label('name', 'Name') }}
                                     {{Form::text('name', "" , ['class' => 'form-control']) }}
 
-                                    {{Form::label('password', 'Password') }}
-                                    {{Form::password('password', ['class' => 'form-control']) }}
-
                                     {{Form::label('email', 'Email') }}
-                                    {{Form::email('email', "", ['class' => 'form-control']) }}
+                                    {{Form::text('email',"" , ['class' => 'form-control']) }}
 
-                                    {{Form::label('date_of_birth', 'Date of Birth') }}
-                                    {{Form::text('date_of_birth', "", ['class' => 'form-control', "placeholder","dd/mm/yy"]) }}
+                                    {{Form::label('time_per_month', 'Time per month (Minutes)') }}
+                                    {{Form::number('time_per_month', "", ['class' => 'form-control']) }}
 
-                                    {{Form::label('team', 'Team') }}
-                                    {{Form::text('team', "", ['class' => 'form-control']) }}
+                                    {{Form::label('billing_rate', 'Bliing Rate') }}
+                                    {{Form::number('billing_rate', "", ['class' => 'form-control']) }}
 
-                                    {{Form::label('working_hours', 'Working Hours(Minutes)') }}
-                                    {{Form::text('working_hours', "480", ['class' => 'form-control']) }}
+                                    {{Form::label('account_manager', 'Account Manager') }}
+                                    {{Form::select('account_manager',\App\User::all()->pluck('name','id'), "", ['class' => 'form-control']) }}
 
-                                    {{Form::submit('Submit',['class' => 'btn btn-success'])}}
-                                    {{Form::close()}}
+                                    {{Form::label('project_manager', 'Project Manager') }}
+                                    {{Form::select('project_manager',\App\User::all()->pluck('name','id'), "", ['class' => 'form-control']) }}
                                 </div>
+                                {{Form::submit('Submit',['class' => 'btn btn-success'])}}
+                                {{Form::close()}}
+
                             </div>
                         </div>
                     </div>
-                </section>
             </div>
-        </div>
+    </section>
+    </div>
+    </div>
     </section>
 
 @endsection

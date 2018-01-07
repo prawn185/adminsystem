@@ -14,7 +14,6 @@ class CustomerController extends Controller
 
         $customers = Customer::all();
 
-        // dd($customers);
         return view('customer.all')->with('customers', $customers);
     }
 
@@ -24,27 +23,28 @@ class CustomerController extends Controller
 
         $tasks = Task\Task::where('customer_id', $id)->where('status', '!=', 'Completed')->with('notes')->get();
 
+
+
         return view('customer.view')->with('customer', $data)->with('tasks', $tasks);
     }
 
-    function editCustomer($id = null)
+    function editCustomer($id)
     {
 
+
         if ($id == "") {
-            $customer = new Customer();
+            return view('customer.create');
         } else {
             $customer = Customer::find($id);
+            return view('customer.edit')->with('customer', $customer);
         }
 
-        return view('customer.edit')->with('customer', $customer);
+
     }
 
-    function createEditCustomer(Request $request, $id = null)
+    function createEditCustomer(Request $request)
     {
-
-//        dd($request->input());
-
-        if ($id == "") {
+        if ($request->id == "") {
             $customer = new Customer();
             $customer->tasks = 0;
             $customer->paid_this_month = 0;

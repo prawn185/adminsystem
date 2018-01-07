@@ -22,7 +22,8 @@ function showNotes($i) {
 
 $('#changeTaskList').on('change', function(){
 
-    window.location = ("/adminsystem/public/tasks/"+$(this).val());
+    window.location = ("/tasks/"+$(this).val());
 });
 
 
+flatpickr("#datepicker", {});

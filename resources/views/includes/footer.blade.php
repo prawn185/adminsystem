@@ -8,5 +8,7 @@
         <script src="{{URL::asset("js/dist/popper.min.js")}}"></script>
         <script src="{{URL::asset("js/bootstrap.min.js")}}"></script>
         <script src="{{URL::asset("js/main.js")}}"></script>
-    </body>
+
+
+        </body>
 </html>

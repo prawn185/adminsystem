@@ -7,7 +7,7 @@
                 <h1>Task List</h1>
                 <a href="{{URL::to('tasks/create')}}"><div class="btn btn-success">Create Task <i class="fa fa-plus" aria-hidden="true"></i></div></a>
                 <div class="col-lg-3 float-right">
-                    {{ Form::select('user', $users, '' , ['class' =>'form-control', 'id'=>'changeTaskList'])}}
+                    {{ Form::select('user', $users, '' , ['class' =>'form-control', 'id'=>'changeTaskList', 'placeholder'=>'Select a User'])}}
                 </div>
             </div>
         </div>
@@ -17,9 +17,6 @@
                 <div class="col-lg-12">
 
                     @foreach($tasks as $task)
-
-                        {{--{{var_dump($task)}}--}}
-
                         @php
                             $time_left =  (int)$task->total_time - (int)$task->time_used;
                         @endphp
@@ -47,7 +44,7 @@
                                         <h6>Status: {{$task->status}}</h6>
                                         <h6>Customer: {{ \App\Models\Customer::find($task->customer_id)['name']}}</h6>
                                         <h6>Assigned To: {{app\User::find($task->assignedTo)['name']}}</h6>
-                                        <h6>Created By: {{app\User::find($task->createdBy)['name']}}</h6>
+                                        <h6>Created By: {{app\User::find($task->created_by)['name']}}</h6>
                                         {{--     <h6>Updated At: {{Carbon\Carbon::createFromTimestamp($task->updated_at)}}</h6>--}}
                                         <h6>Total Time: {{$task->total_time}}</h6>
                                         <h6 @if($time_left < 0 ){{"style=background-color:#d83845"}} @endif >Time Left: {{$time_left}}</h6>

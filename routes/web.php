@@ -10,19 +10,15 @@
 | contains the "web" middleware group. Now create something great!
 |
 */
-Route::get('/', function () {
-    if (Auth::check()) {
-        return View::make('pages.admin');
-    } else {
-        return View::make('auth.login');
-    }
-});
+//Route::get('/', function(){dd('ads');});
+
+Route::get('/', 'LoginController@index')->name('home');
 
 Route::get('logout', 'LoginController@logout');
 
 Auth::routes();
 
-Route::get('pages.admin', 'LoginController@index')->name('home');
+//Route::get('pages.admin', 'LoginController@index')->name('home');
 
 
 
@@ -85,7 +81,9 @@ Route::group(['middleware' => ['auth']], function () {
     Route::get('customer/edit/{id}', 'CustomerController@editCustomer');
     Route::post('customer/edit/{id}', 'CustomerController@createEditCustomer');
 
-    Route::get('customers/create', 'CustomerController@editCustomer');
+    Route::get('customers/create',function (){
+        return view('customer.create');
+    });
     Route::post('customers/create', 'CustomerController@createEditCustomer');
 
 
@@ -96,15 +94,5 @@ Route::group(['middleware' => ['auth']], function () {
         return view('reports.search');
     });
     Route::post('reports', 'ReportController@search');
+    Route::post('reports/result', 'ReportController@search');
 });
-
-
-
-
-
-Route::get('logout', 'LoginController@logout');
-
-Auth::routes();
-
-Route::get('pages.admin', 'LoginController@index')->name('home');
-
