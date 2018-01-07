@@ -22,34 +22,37 @@
 
                                     {{Form::open(array('action' => array('CustomerController@createEditCustomer')))}}
 
-                                    {{Form::label('name', 'Name') }}
-                                    {{Form::text('name', "" , ['class' => 'form-control']) }}
+                                    <div class="form-group">
 
-                                    {{Form::label('email', 'Email') }}
-                                    {{Form::text('email',"" , ['class' => 'form-control']) }}
 
-                                    {{Form::label('time_per_month', 'Time per month (Minutes)') }}
-                                    {{Form::number('time_per_month', "", ['class' => 'form-control']) }}
+                                        {{Form::label('name', 'Name') }}
+                                        {{Form::text('name', "" , ['class' => 'form-control']) }}
 
-                                    {{Form::label('billing_rate', 'Bliing Rate') }}
-                                    {{Form::number('billing_rate', "", ['class' => 'form-control']) }}
+                                        {{Form::label('email', 'Email') }}
+                                        {{Form::text('email',"" , ['class' => 'form-control']) }}
 
-                                    {{Form::label('account_manager', 'Account Manager') }}
-                                    {{Form::select('account_manager',\App\User::all()->pluck('name','id'), "", ['class' => 'form-control']) }}
+                                        {{Form::label('time_per_month', 'Time per month (Minutes)') }}
+                                        {{Form::number('time_per_month', "", ['class' => 'form-control']) }}
 
-                                    {{Form::label('project_manager', 'Project Manager') }}
-                                    {{Form::select('project_manager',\App\User::all()->pluck('name','id'), "", ['class' => 'form-control']) }}
+                                        {{Form::label('billing_rate', 'Bliing Rate') }}
+                                        {{Form::number('billing_rate', "", ['class' => 'form-control']) }}
+
+                                        {{Form::label('account_manager', 'Account Manager') }}
+                                        {{Form::select('account_manager',\App\User::all()->pluck('name','id'), "", ['class' => 'form-control']) }}
+
+                                        {{Form::label('project_manager', 'Project Manager') }}
+                                        {{Form::select('project_manager',\App\User::all()->pluck('name','id'), "", ['class' => 'form-control']) }}
+                                    </div>
+                                    {{Form::submit('Submit',['class' => 'btn btn-success'])}}
+                                    {{Form::close()}}
+
                                 </div>
-                                {{Form::submit('Submit',['class' => 'btn btn-success'])}}
-                                {{Form::close()}}
-
                             </div>
                         </div>
                     </div>
+                </section>
             </div>
-    </section>
-    </div>
-    </div>
+        </div>
     </section>
 
 @endsection

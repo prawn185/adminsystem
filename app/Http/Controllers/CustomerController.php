@@ -30,15 +30,8 @@ class CustomerController extends Controller
 
     function editCustomer($id)
     {
-
-
-        if ($id == "") {
-            return view('customer.create');
-        } else {
-            $customer = Customer::find($id);
-            return view('customer.edit')->with('customer', $customer);
-        }
-
+        $customer = Customer::find($id);
+        return view('customer.edit')->with('customer', $customer);
 
     }
 

@@ -25,8 +25,8 @@
                                     <h6>Have they paid: {{$customer->paid_this_month}}</h6>
                                 </div>
                                 <div class="col-lg-6">
-                                    <h6>Account Manager: {{\App\User::find($customer->account_manager)->name}}</h6>
-                                    <h6>Project Manager: {{\App\User::find($customer->project_manager)->name}}</h6>
+                                    <h6>Account Manager:  {{$customer->account_manager or "Not Set"}}</h6>
+                                    <h6>Project Manager: {{$customer->project_manager->name or "Not Set"}}</h6>
                                 </div>
                             </div>
                         </div>
